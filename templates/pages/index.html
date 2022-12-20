@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+
+{% include 'components/navbar.html' %}
+{% endblock navbar %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% if status %}
+<main class="mx-4">
+  <div class="mt-10 shadow-xl rounded-lg bg-gray-800 px-5 py-4 ">
+    <h2 class="text-white dark:text-white ">Create Task</h2>
+    <p class="text-slate-400 text-xl mt-2 ">Welcome create your first task and start managing them</p>
+    <a href="{% url 'create' %}" class="no-underline transition duration-150 ease-in-out block w-48 py-3 px-10 rounded-md shadow bg-yellow-500 text-white sm:text-center textfont-medium hover:bg-yellow-400 focus:outline-none "> 
+      Create now
+    </a>
+  </div>
+</main>
+
+{% else %}
+
+<div class="mx-4 mt-5">
+  <div class="text-center" >
+    <h3 class="text-white ">{{title}} Tasks </h3>
+  </div>
+
+  <div class="first:mt-12 mt-4 max-w-lg mx-auto lg:grid gap-3  lg:grid-cols-4 lg:max-w-none	">
+    {% for task in tasks%}
+    <a href="{% url 'detail' task.id %}" class="transition duration-500 ease-in-out transform hover:-translate-y-1  no-underline ">
+      <div class=" bg-gray-800	ring-1 ring-slate-900/5 mt-5 shadow-xl lg:flex flex-col rounded-lg overflow-hidden px-6 py-3 	 sm:grow w-100">
+        <div>
+          <div class="flex justify-between">
+            {% if task.important %}
+            <h3 class="text-amber-400	 dark:text-amber mt-1 text-base font-medium tracking-tight">{{task.title | truncatechars:15 }}</h3>
+            {% else %}
+            <h3 class="text-white dark:text-white mt-1 text-base font-medium tracking-tight">{{task.title | truncatechars:15}}</h3>
+            {% endif %}
+            <p class="text-gray-300	text-right shadow-lg  p-1 text-sm bg-slate-600	rounded">{{task.categories}}</p>
+
+            
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+            {{task.description | truncatechars:20}}
+          </p>
+          <div class="flex flex-between text-sm text-gray-400">
+            {% if task.finished %}
+            <span>
+              Finished: 
+              {{task.datecompleted}}
+            </span>
+            {% else %}
+            <span>
+              Create: 
+              {{task.timestamp}}
+            </span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </a>
+      
+      {% endfor %}
+  </div>
+</div>
+
+{% endif %}
+
+{% else %}
+<div class="sm:pt-16   lg:overflow-hidden">
+  <main>
+      <div class="mx-auto max-w-7xl lg:px-6">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-6">
+          <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+            <div class="lg:py-24">
+             
+              <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                <span class="block">Manage your </span>
+                <span class="block text-yellow-400">tasks</span>
+              </h1>
+                <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                    Manage your tasks quickly and easily, Sign up now!
+                </p>
+              <div class="mt-10 sm:mt-12">
+                  <div>
+                    <a href="{% url 'sign-up' %}" class="no-underline shadow-yellow-500  hover:-translate-y-1 transition duration-150 ease-in-out block w-full py-3 px-10 rounded-md  bg-amber-400 text-white sm:text-center textfont-medium hover:bg-yellow-400 shadow-yellow-500"> 
+                      Sign-Up
+                    </a>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:mx-auto lg:w-full mt-12 mb-12 sm:mx-6 sm:mb-14 lg:m-0 lg:relative">
+              <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
+              <img class="w-full opacity-80 rounded-lg shadow-xl lg:absolute  lg:h-full   sm:max-lg" src="{% static 'img-home.jpg' %}" alt="">
+          </div>
+        </div>
+      </div>
+      
+      <!-- More main page content here... -->
+    </main>
+ 
+ 
+    
+</div>
+
+{% endif %}
+
+{% endblock content %}

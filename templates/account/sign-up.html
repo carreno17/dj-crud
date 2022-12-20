@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="fixed inset-0   bg-opacity-75 transition-opacity"
+style="background-image: url('{% static 'background-signup.jpg' %}');
+background-repeat: no-repeat; background-position: center; background-size: cover; opacity: 0.8;" >
+</div>
+                  
+<div class="fixed inset-0 z-10 overflow-y-auto">
+  <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+   
+    <div class='flex justify-center'>
+        <div class="bg-gray-700 p-6 max-w-md  shadow-2xl rounded-lg ">
+          <div class="flex-1 flex flex-col justify-center">
+            <div class="mx-auto w-full max-w-sm lg:w-96">
+              <div class='flex justify-between'>
+                    <div class="flex justify-start">
+                        <img class="w-auto h-12" src={% static 'logo.png' %} alt="marktplace">
+                        <h3 class=" ml-2 mt-2 flex justify-center text-gray-300">Sign Up</h3>
+                    </div>
+                   
+                </div>
+                
+                <div>
+                    
+                  <div class="py-3 px-6 lg:px-8">
+                      <form action="#" method="POST" class="space-y-6">
+                        {% csrf_token %}
+                        <div>
+                        {% include 'messages.html' %}
+                        <label for="email" class=" text-left block text-sm font-medium text-gray-300">Email address</label>
+                        <div class="mt-1">
+                          <input id="email" name="email" type="email" placeholder="name@example.com" required class="
+                          appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 sm:text-sm
+                          focus:outline focus:outline-offset-0 focus:outline-yellow-500">
+                        </div>
+                      </div>
+          
+                      <div>
+                      
+                        <label for="password" class="  text-left block text-sm font-medium text-gray-300">Password</label>
+                        <div class="mt-1">
+                          <input id="password" name="password" type="password" placeholder="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline focus:outline-offset-0 focus:outline-yellow-500  sm:text-sm">
+                        </div>
+                      </div>
+                      <div>
+                      
+                        <label for="password" class="text-left block text-sm font-medium text-gray-300">Confirm password</label>
+                        <div class="mt-1">
+                          <input id="password1" name="password1" type="password" placeholder="repeat password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline focus:outline-offset-0 focus:outline-yellow-500  sm:text-sm">
+                        </div>
+                      </div>
+                      <div class="flex justify-between">
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" type="checkbox" value="false" class="h-4 w-4  text-yellow-500 focus:ring-yellow-400  rounded">
+                            </div>
+                            <label for="remember" class="ml-2 text-sm font-medium text-gray-300 dark:text-gray-300">Remember me</label>
+                        </div>
+                        </div>
+                        <button type="submit" class="w-full text-white bg-yellow-500 hover:bg-yellow-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Sign Up</button>
+                        <div class="text-sm font-medium text-gray-300 dark:text-gray-300">
+                          Are you already registered? <a href="{% url 'home' %}" class="text-yellow-500 no-underline text-yellow-500 hover:text-yellow-500">Login</a>
+                        </div>
+
+                    </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock content %}
+</body>
