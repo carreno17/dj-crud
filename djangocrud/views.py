@@ -104,12 +104,13 @@ class CreateTaskUser(LoginRequiredMixin, View):
         if request.method == 'POST':
             form=FormTask(request.POST)
             if form.is_valid():
+                print(request.POST)
                 form.user=request.user
                 title = form.cleaned_data.get('title')
                 description = form.cleaned_data.get('description')
                 important = form.cleaned_data.get('important')
-                categories = Categories.objects.get(name=request.POST['categories'])
-                p, create = CreateTask.objects.get_or_create(user=form.user,title=title,description=description, categories=categories, important=important)
+                categorie = Categories.objects.get(name=request.POST['categories'])
+                p, create = CreateTask.objects.get_or_create(user=form.user,title=title,description=description, categories=categorie , important=important)
                 p.save()
                 return redirect('home')
 
