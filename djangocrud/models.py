@@ -8,10 +8,11 @@ class Categories(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='categories', null=True, blank=True)
     name = models.CharField(max_length=100)
 
-    
     def __str__(self):
         return self.name
+
     
+
 
 class CreateTask(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasks")
@@ -27,3 +28,9 @@ class CreateTask(models.Model):
         return "User: {} , Title: {}".format(self.user, self.title)
 
 
+def create_category():
+    Categories.objects.create(name="Ninguna")
+
+i=0
+while i==1:
+    i=i+1
