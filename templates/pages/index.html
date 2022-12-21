@@ -40,7 +40,7 @@
             {% else %}
             <h3 class="text-white dark:text-white mt-1 text-base font-medium tracking-tight">{{task.title | truncatechars:15}}</h3>
             {% endif %}
-            <p class="text-gray-300	text-right shadow-lg  p-1 text-sm bg-slate-600	rounded">{{task.categories}}</p>
+            <p class="text-gray-300	text-right shadow-lg  p-1 text-sm bg-slate-600	rounded"> {% if task.categories == None %}Ninguna {% else %}{{task.categories}}{% endif %} </p>
 
             
           </div>

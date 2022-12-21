@@ -21,8 +21,9 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             tasks = CreateTask.objects.filter(user=self.request.user , datecompleted=None)
-            
-            if len(tasks) == 0:
+            tasksUser=CreateTask.objects.filter(user=self.request.user)
+
+            if len(tasksUser) == 0:
                 status=True
                 
                 context = {
@@ -109,9 +110,14 @@ class CreateTaskUser(LoginRequiredMixin, View):
                 title = form.cleaned_data.get('title')
                 description = form.cleaned_data.get('description')
                 important = form.cleaned_data.get('important')
-                categorie = Categories.objects.get(name=request.POST['categories'])
-                p, create = CreateTask.objects.get_or_create(user=form.user,title=title,description=description, categories=categorie , important=important)
+                try:
+                    categorie = Categories.objects.get(name=request.POST['categories'])
+                    p, create = CreateTask.objects.get_or_create(user=form.user,title=title,description=description, categories=categorie , important=important)
+                except:
+                    p, create = CreateTask.objects.get_or_create(user=form.user,title=title,description=description , important=important)
+                
                 p.save()
+                    
                 return redirect('home')
 
         return render(request, 'pages/task/create.html', {})
@@ -151,17 +157,25 @@ class  UpdateTask(LoginRequiredMixin, View):
     
     def post(self, request, pk, *args, **kwargs):
         
+        print(request.POST)
         form= CreateTask.objects.get(id=pk)
-    
-        if request.POST['important'] == "on":
-            form.important =  "True"
-    
-
         form.title = request.POST['title']
         form.description = request.POST['description']
-        
-        
-        form.categories = Categories.objects.get(name=request.POST['categories'])
+
+
+        try:
+            if request.POST['important'] == "on":
+                form.important =  "True"
+        except:
+            form.important= "False"
+
+
+        try:
+            form.categories = Categories.objects.get(name=request.POST['categories'])
+
+        except:
+            pass
+
         form.save()
         return HttpResponseRedirect(reverse('detail',
                                     args=[form.id]))

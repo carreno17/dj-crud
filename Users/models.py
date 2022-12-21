@@ -16,7 +16,6 @@ se le cree inmediatamente la libreria"""
 def post_save_user_receiver(sender, instance, created, **kwargs):
     if created:
         library=LibraryCategory.objects.create(user=instance)
-        library.categories.add(Categories.objects.get(name='Ninguna'))
         
 
 post_save.connect(post_save_user_receiver, sender=User)

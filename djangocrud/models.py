@@ -26,11 +26,3 @@ class CreateTask(models.Model):
 
     def __str__(self):
         return "User: {} , Title: {}".format(self.user, self.title)
-
-
-def create_category():
-    Categories.objects.create(name="Ninguna")
-
-i=0
-while i==1:
-    i=i+1
