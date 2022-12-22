@@ -10,8 +10,8 @@
 
             <div class=" relative flex items-center justify-between spx-4 sm:px-6" >
                     
-                <img class="h-12 w-12 mr-2 " src={% static 'logo.png' %} alt="Task">
                 <a href="{% url 'home' %}">
+                <img class="h-10 w-10 mr-2 " src={% static 'logo.png' %} alt="Task">
                 <span class="sr-only">Task</span>
                 </a>
                 
@@ -40,22 +40,23 @@
                 <a href="{% url 'create' %}" class="no-underline w-20 flex justify-center py-2 px-3 rounded  text-sm font-medium text-white bg-yellow-500 shadow-lg shadow-yellow-400/50   hover:bg-yellow-400 sm:mr-2">
                         Create
                 </a> 
-                <!--
-                    <button class="bg-blue-500 shadow-lg shadow-blue-500/50 ">Subscribe</button>
-
-                -->
+               
 
                 <div x-data="{ open: false }">
                    
-                        <button @click="open = true" @click.outside="open = false"  class="ml-2 flex justify-end items-center text-decoration-none " >
-                            <img src="{% static 'img-user.png' %}" alt="mdo" width="32" height="32" class="m-1 rounded-full mx-auto ">
-                            <span class="flex text-slate-200 m-1 sm:m-0 ">{{user.username | truncatechars:15}}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="lg:w-6 lg:h-6 sm:w-14 sm:h-14">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                            </svg>
+                        <button @click="open = true" @click.outside="open = false"  class=" flex justify-end items-center text-decoration-none " >
+                            
+                            <div class="flex justify-end items-center ">
+                                <img src="{% static 'img-user.png' %}" alt="mdo" width="32" height="32" class="m-1 rounded-full mx-auto ">
+                                <span class="lg:visible  flex text-slate-200 m-1 sm:m-0 ">{{user.username | truncatechars:15}}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="lg:visible sm:w-14 sm:h-12 w-6 h-6"> 
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            
                         </button>    
                         
-                        
+        
                         
                     <div x-show="open" 
                     x-transition:enter="transition ease-out duration-300"
