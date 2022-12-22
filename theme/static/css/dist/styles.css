@@ -773,10 +773,6 @@ select {
   visibility: visible;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
 .collapse {
   visibility: collapse;
 }
@@ -977,10 +973,6 @@ select {
   height: 100vh;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .min-h-full {
   min-height: 100%;
 }
@@ -1023,10 +1015,6 @@ select {
 
 .w-14 {
   width: 3.5rem;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .max-w-md {
@@ -1191,11 +1179,6 @@ select {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .bg-slate-800 {
@@ -1553,11 +1536,6 @@ select {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-.shadow-blue-500\/50 {
-  --tw-shadow-color: rgb(59 130 246 / 0.5);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .shadow-yellow-500 {
   --tw-shadow-color: #eab308;
   --tw-shadow: var(--tw-shadow-colored);
@@ -1840,16 +1818,8 @@ select {
 }
 
 @media (min-width: 640px) {
-  .sm\:visible {
-    visibility: visible;
-  }
-
   .sm\:invisible {
     visibility: hidden;
-  }
-
-  .sm\:collapse {
-    visibility: collapse;
   }
 
   .sm\:col-span-2 {
@@ -1881,52 +1851,12 @@ select {
     margin-bottom: 3.5rem;
   }
 
-  .sm\:mr-4 {
-    margin-right: 1rem;
-  }
-
-  .sm\:mr-6 {
-    margin-right: 1.5rem;
-  }
-
-  .sm\:mr-10 {
-    margin-right: 2.5rem;
-  }
-
-  .sm\:hidden {
-    display: none;
-  }
-
   .sm\:h-14 {
     height: 3.5rem;
   }
 
-  .sm\:h-12 {
-    height: 3rem;
-  }
-
-  .sm\:h-16 {
-    height: 4rem;
-  }
-
-  .sm\:h-10 {
-    height: 2.5rem;
-  }
-
   .sm\:w-14 {
     width: 3.5rem;
-  }
-
-  .sm\:w-12 {
-    width: 3rem;
-  }
-
-  .sm\:w-16 {
-    width: 4rem;
-  }
-
-  .sm\:w-10 {
-    width: 2.5rem;
   }
 
   .sm\:max-w-2xl {
@@ -1939,6 +1869,10 @@ select {
 
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:stroke-1 {
+    stroke-width: 1;
   }
 
   .sm\:p-0 {
@@ -1975,14 +1909,6 @@ select {
 }
 
 @media (min-width: 768px) {
-  .md\:visible {
-    visibility: visible;
-  }
-
-  .md\:invisible {
-    visibility: hidden;
-  }
-
   .md\:hidden {
     display: none;
   }
@@ -1991,10 +1917,6 @@ select {
 @media (min-width: 1024px) {
   .lg\:visible {
     visibility: visible;
-  }
-
-  .lg\:invisible {
-    visibility: hidden;
   }
 
   .lg\:absolute {
@@ -2026,20 +1948,12 @@ select {
     margin-top: 1.5rem;
   }
 
-  .lg\:ml-2 {
-    margin-left: 0.5rem;
-  }
-
   .lg\:flex {
     display: flex;
   }
 
   .lg\:grid {
     display: grid;
-  }
-
-  .lg\:hidden {
-    display: none;
   }
 
   .lg\:h-6 {
@@ -2084,6 +1998,10 @@ select {
 
   .lg\:overflow-hidden {
     overflow: hidden;
+  }
+
+  .lg\:stroke-2 {
+    stroke-width: 2;
   }
 
   .lg\:px-8 {
